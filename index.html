@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="css/style.css" rel="stylesheet"/>
+
+ <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+ <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnKsuoCAMTcuycn2hOoh7gdFeCzDyygB8&callback=initMap"
+  type="text/javascript"></script>
+
+<script type="text/javascript">
+	x=navigator.geolocation;
+	x.getCurrentPosition(success,failure);
+	function success(position)
+	{
+		var mylat=position.coords.latitude;
+		var mylong=position.coords.longitude;
+		
+		document.getElementById("lat").value = mylat;
+		document.getElementById("long").value = mylong;
+         
+       var coords=new google.maps.LatLng(mylat,mylong);
+        var mapOptions={
+        	zoom:9,
+        	center:coords,
+        	mapTypeId:google.maps.MapTypeId.POADMAP
+        }
+		
+		
+	}
+
+	function failure(){
+
+	}
+   
+</script>
+
+
+
+</head>
+<body>
+	<div id="zom">
+		<div class="center-div">
+        <h1 class="font-weight-bold" style="font-size: 70px;">ZOMATO</h1>
+	   </div>
+
+	<div id="img">
+		<div class="mid" id="intro-conatiner">
+			<form method="post" action="restlist.php">
+			<input type="hidden" placeholder="lat" name="lat" id="lat"><br>
+			<input type="hidden" placeholder="long" name="long" id="long"><br>
+            
+			<button type="submit" class="btn btn-danger" name="search">USE CURRENT LOCATION</button>
+		</form>
+		</div>
+	</div>   
+</body>
+</html>
